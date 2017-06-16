@@ -1,0 +1,35 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Registration</h1>
+<form th:action="@{/registration}" th:object="${newUserDto}" method="POST">
+    <table>
+        <tr>
+            <td>Username:</td>
+            <td><input type="text" th:field="*{username}"/></td>
+            <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" th:field="*{password}"/></td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
+        </tr>
+        <tr>
+            <td>Repeat Password:</td>
+            <td><input type="password" th:field="*{repeatPassword}"/></td>
+            <td th:if="${#fields.hasErrors('${newUserDto}')}" th:errors="${newUserDto}"></td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Register</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
